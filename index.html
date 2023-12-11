@@ -258,373 +258,165 @@
 <main class="page-container" id="swup">
 
     
-        $temp-title-fs = hexo-config('home_banner.text_style.title_size')
-$title-font-size = $temp-title-fs ? convert($temp-title-fs) : 2.8rem
-$temp-subtitle-fs = hexo-config('home_banner.text_style.subtitle_size')
-$subtitle-font-size = $temp-subtitle-fs ? convert($temp-subtitle-fs) : 1.4rem
-$temp-line-height = hexo-config('style.first_screen.line_height')
-$line-height = $temp-line-height ? $temp-line-height : 1.2
-$home-banner-icon-size = 1.6rem
+        
+    <style>
+        .home-banner-container {
+            background: none !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .right-bottom-tools:hover,
+        a.page-number:hover,
+        a.extend:hover {
+            background-color: var(--primary-color) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+    </div>
 
-@import '../../common/variables'
 
-.home-banner-background
-  //background var(--home-banner-img) center center / cover no-repeat
-  transition filter 0.3s ease
-
-.home-banner-container
-  font-family 'Chillax-Variable', sans-serif
-  position relative
-  box-sizing border-box
-  width 100%
-  min-height 100vh
-  overflow hidden
-  will-change transform
-
-  .content
-    position relative
-    box-sizing border-box
-    min-height 90vh
-
-    .description
-      font-size $title-font-size
-      line-height $line-height
-      color var(--home-banner-text-color)
-
-      p
-        margin 0
-        opacity 0.9
-        font-family 'Satoshi-Variable', sans-serif
-        font-weight 350
-
-        i
-          font-size $subtitle-font-size
-          font-style normal
-
-        span
-          font-size: $subtitle-font-size * 1.05
-
-      +redefine-tablet()
-        font-size: $title-font-size * 0.9
+<div class="home-banner-container flex justify-center items-center transition-fade relative">
+    
+    <div class="content mt-8 flex flex-col justify-center items-center">
+        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
+        
+        >
+            左叶流云
+            
+            
+                <p><i id="subtitle"></i></p>
+            
+        </div>
+        
+    </div>
+    <script>
+        const scrollToMain = ()=> {
+            console.log('scroll');
+            const target = document.querySelector('.main-content-container');
+            target.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
+</div>
     
 
     <div class="main-content-container">
 
 
         <div class="main-content-header">
-            $logo-title-font-size = 1.7rem
-$desktop-search-icon-font-size = 1.5rem
-$navbar-bar-line-height = 2.5px
-$logo-image-box-width = 34px
+            <header class="navbar-container">
 
-@import '../../common/variables'
+    <div class="navbar-content has-home-banner">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://s2.loli.net/2023/11/23/LHxsl6j1qJe58tG.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+                <h1>
+                Zuoyly
+                </h1>
+            </a>
+        </div>
 
-.navbar-container
-  font-family 'Chillax-Variable', sans-serif
-  width 100%
-  height 100%
-  box-sizing border-box
-  display flex
-  align-items center
-  justify-content center
-  background $nav-color-bg
-  -webkit-backdrop-filter blur(10px)
-  backdrop-filter blur(10px)
-  padding-top $scroll-progress-bar-height
-  hover-style(
-    false,
-    0,
-    0
-  )
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
 
-  .navbar-content
-    position relative
-    height 100%
-    width $main-content-width
-    max-width $content-max-width
-    display flex
-    flex-direction row
-    justify-content space-between
-    align-items center
-    z-index $z-index-5
-    transition max-width 0.3s ease
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="active"
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
 
-    &.has-home-banner
-      max-width $content-max-width * 1.2
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    +redefine-tablet()
-      width $main-content-width-tablet
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
 
-    +redefine-mobile()
-      width $main-content-width-mobile
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-    .left
-      display flex
-      align-items center
-      //transform-origin bottom
-      //transition-t('transform', '0', '0.15', 'ease')
-      //
-      //.navbar-shrink &
-      //  transform scale(0.9)
-      //  transform-origin bottom
+                        
+                    </li>
+            
+        </ul>
 
-      if (hexo-config('defaults.logo') && hexo-config('defaults.logo') != '')
-        .logo-image
-          width $logo-image-box-width
-          height $logo-image-box-width
-          margin-right 12px
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
 
-          +redefine-tablet()
-            width: $logo-image-box-width * 0.9
-            height: $logo-image-box-width * 0.9
+    <div class="window-mask"></div>
 
-          +redefine-mobile()
-            width: $logo-image-box-width * 0.8
-            height: $logo-image-box-width * 0.8
+</header>
 
-          img
-            border-radius 6px
-            width 100%
-
-      .logo-title
-        font-size $logo-title-font-size
-        font-weight 520
-        //letter-spacing 1px
-        line-height 1
-        color var(--first-text-color)
-        transform translateY(1px)
-
-        h1
-          margin 0
-          font-size $logo-title-font-size
-          font-weight 520
-          //letter-spacing 1px
-          line-height 1
-          color var(--first-text-color)
-          transform translateY(1px)
-
-          +redefine-tablet()
-            font-size: $logo-title-font-size * 0.9
-
-          +redefine-mobile()
-            font-size: $logo-title-font-size * 0.8
-
-        +redefine-tablet()
-          font-size: $logo-title-font-size * 0.9
-
-        +redefine-mobile()
-          font-size: $logo-title-font-size * 0.8
-
-    .right
-      .desktop
-        .navbar-list
-          display flex
-          gap 24px
-          align-items center
-
-          +redefine-tablet()
-            display none
-
-          .navbar-item
-            float left
-            // padding 5px
-            position relative
-            font-size 1rem
-            font-weight 450
-            cursor pointer
-            color var(--default-text-color)
-
-            a
-              display block
-              padding 5px
-
-            a .fa-chevron-down
-              transform rotate(0deg)
-              transition transform 0.3s ease
-
-            a, .active
-              &::after
-                content ''
-                position absolute
-                bottom -5px
-                left 50%
-                width 100%
-                height 2px
-                transform translate3d(-50%, -5px, 0)
-                border-radius $redefine-border-radius-large
-                background var(--primary-color)
-                opacity 0
-                transition-t('transform, bottom, opacity', '0.2, 0.2, 0.2', '0.2, 0.2, 0.2', 'ease, ease, ease')
-
-                .navbar-shrink &
-                  bottom -($navbar-shrink-height / 2 - 17)
-
-            &:hover a .fa-chevron-down
-              transform rotate(180deg)
-
-            &:hover .has-dropdown
-              &::after
-                display none !important
-
-            &:hover a, .active
-              &::after
-                transform translate3d(-50%, 0, 0)
-                opacity 1
-                transition-t('transform, bottom, opacity', '0, 0, 0', '0.2, 0.2, 0.2', 'ease, ease, ease')
-
-                .navbar-shrink &
-                  bottom -($navbar-shrink-height / 2 - 17)
-
-            &.search
-              font-size $desktop-search-icon-font-size
-              margin-left 26px
-
-              i
-                color var(--default-text-color)
-
-            .sub-menu
-              position absolute
-              right auto
-              left 50%
-              -webkit-transform translate(-50%, 0)
-              -o-transform translate(-50%, 0)
-              transform translate(-50%, 0)
-              margin-top 0px
-              width auto
-              text-align center
-              list-style none
-              padding 0 10px
-              border-radius $redefine-border-radius-large
-              // visibility hidden
-              max-height 0px
-              overflow hidden
-              transition-t('all', '0', '0.2', 'linear')
-
-              li a
-                white-space nowrap
-                color var(--default-text-color)
-                font-size 1rem
-                padding 3px 15px
-                display block
-                text-align center
-                border-radius 8px
-                transition-t('all', '0', '0.2', 'linear')
-
-                &:hover
-                  color var(--primary-color)
-                  background-color var(--third-background-color)
-
-        .navbar-list .navbar-item:hover .sub-menu
-          // visibility visible
-          max-height 500px
-          transition-t('all', '0', '0.2', 'ease')
-          redefine-container(
-            false,
-            0,
-            0,
-            10px,
-            5px
-          )
-
-      .mobile
-        display flex
-        justify-content space-between
-        align-items center
-
-        .icon-item
-          display none
-          position relative
-          cursor pointer
-          font-size 18px
-          margin-left 12px
-          width 20px
-          height 20px
-          color var(--default-text-color)
-
-          i
-            color var(--default-text-color)
-
-          &:first-child
-            margin-left 0
-
-          +redefine-tablet()
-            display flex
-            justify-content center
-            align-items center
-
-        .navbar-bar
-          .navbar-bar-middle
-            width 18px
-            height $navbar-bar-line-height
-            position relative
-            background var(--default-text-color)
-
-            .navbar-drawer-show &
-              background transparent
-
-            &::before, &::after
-              content ''
-              position absolute
-              left 0
-              width 100%
-              height $navbar-bar-line-height
-              background var(--default-text-color)
-              transition-t('transform', '0', '0.38', 'ease')
-
-            &::before
-              top -6px
-
-              .navbar-drawer-show &
-                transform translateY(6px) rotate(45deg)
-
-            &::after
-              bottom -6px
-
-              .navbar-drawer-show &
-                transform translateY(-6px) rotate(-45deg)
-
-  .navbar-drawer
-    padding $navbar-height 0 20px 0
-    transform translateX(100%)
-    transform-origin top
-    z-index $z-index-2
-    height 100vh
-    overflow-y auto
-    transition-t('transform', '0', '0.38', 'ease')
-
-    .navbar-drawer-show &
-      transform translateX(0)
-
-  .window-mask
-    position absolute
-    top 0
-    width 100%
-    height 100vh
-    background rgba(0, 0, 0, 0.4)
-    z-index $z-index-1
-    visibility hidden
-    opacity 0
-    transition-t('transform, opacity', '0, 0', '0.38, 0.38', 'ease, ease')
-
-    .navbar-drawer-show &
-      visibility visible
-      opacity 1
-
-.navbar-drawer-show
-  overflow hidden
-
-[data-target] {
-  display: block; /* or flex, depending on your layout */
-  overflow: hidden;
-}
-
-[data-target] .submenu-item {
-  opacity: 0;
-}
-
-.icon-rotated {
-  transform: rotate(90deg);
-}
 
         </div>
 
